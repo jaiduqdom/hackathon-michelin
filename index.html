@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hackathon Michelin - CEA 2026 | Escuela de Ingenierías Industriales</title>
+    <title>Hackathon Michelin - CEA 2026 | EII</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -12,6 +12,8 @@
         .text-michelin { color: var(--michelin-blue); }
         .accent-michelin { background-color: var(--michelin-yellow); }
         .hero-pattern { background-color: #f8fafc; background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px); background-size: 24px 24px; }
+        .modal { transition: opacity 0.25s ease; }
+        body.modal-active { overflow-y: hidden; }
     </style>
 </head>
 <body class="bg-white text-slate-900 font-sans">
@@ -25,7 +27,7 @@
                 <a href="#inicio" class="hover:text-blue-600 transition">Inicio</a>
                 <a href="#reto" class="hover:text-blue-600 transition">El Reto</a>
                 <a href="#calendario" class="hover:text-blue-600 transition">Calendario</a>
-                <a href="#inscripcion" class="bg-michelin text-white px-5 py-2 rounded-sm shadow-md hover:bg-blue-900 transition">Inscribirse</a>
+                <button onclick="toggleModal()" class="bg-michelin text-white px-5 py-2 rounded-sm shadow-md hover:bg-blue-900 transition">Registrar Equipo</button>
             </div>
         </div>
     </nav>
@@ -36,40 +38,85 @@
                 <div class="inline-block px-4 py-1 bg-yellow-400 text-michelin rounded-full text-[10px] font-black mb-6 uppercase tracking-[0.2em]">Edición 2026</div>
                 <h1 class="text-5xl lg:text-7xl font-black text-michelin mb-6 leading-[1.1] uppercase italic">Ingeniería que <br><span class="text-blue-600 not-italic">mueve el mundo</span></h1>
                 <p class="text-lg text-slate-600 mb-10 max-w-xl leading-relaxed">
-                    Resuelve un reto industrial multidisciplinar aplicando visión artificial, robótica y mecánica. Un evento de la <strong>Cátedra Michelin</strong> y la <strong>Escuela de Ingenierías Industriales</strong>.
+                    Resuelve un reto industrial multidisciplinar aplicando visión artificial, robótica y mecánica. Un evento de la Cátedra Michelin y la Escuela de Ingenierías Industriales.
                 </p>
                 <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                    <a href="#inscripcion" class="bg-michelin text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm">Registrar Equipo</a>
+                    <button onclick="toggleModal()" class="bg-michelin text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm">Registrar Equipo</button>
                 </div>
             </div>
             <div class="lg:w-1/2 relative">
                 <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-8 border-white">
                     <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000" alt="Ingeniería Industrial" class="w-full h-auto">
                 </div>
-                <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-yellow-400 rounded-full z-0"></div>
             </div>
         </div>
     </header>
 
-    <section id="calendario" class="py-24 bg-slate-900 text-white">
+    <section id="reto" class="py-24 bg-white scroll-mt-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-black text-center mb-16 uppercase italic">Calendario 2026</h2>
-            <div class="max-w-2xl mx-auto border-l-2 border-white/20 pl-8 space-y-12">
+            <h2 class="text-3xl font-black text-center mb-16 uppercase italic text-michelin">El Desafío 2026</h2>
+            <p class="max-w-3xl mx-auto text-center text-slate-600 mb-12">
+                Los equipos tendrán acceso a una propuesta planteada por Michelin para resolver un reto industrial multidisciplinar utilizando tecnologías de vanguardia.
+            </p>
+        </div>
+    </section>
+
+    <div id="modalRegistro" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded shadow-lg z-50 overflow-y-auto max-h-[90vh]">
+            <div class="modal-content py-6 text-left px-8">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-black text-michelin uppercase italic">Inscripción de Equipo</p>
+                    <div class="modal-close cursor-pointer z-50" onclick="toggleModal()">
+                        <i class="fas fa-times text-2xl"></i>
+                    </div>
+                </div>
+
+                <form id="formInscripcion" class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-widest text-slate-500 mb-2">Nombre del Equipo</label>
+                        <input type="text" id="nombreEquipo" required class="w-full p-3 bg-slate-100 border-none rounded focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-widest text-slate-500 mb-2">Universidad de Procedencia</label>
+                        <input type="text" id="universidadEquipo" required class="w-full p-3 bg-slate-100 border-none rounded">
+                    </div>
+
+                    <div id="participantesContainer" class="space-y-6">
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                            <h5 class="font-bold text-sm text-blue-600 mb-4 uppercase">Participante 1 (Contacto)</h5>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <input type="text" placeholder="Nombre y Apellidos" required class="p-2 border rounded text-sm participant-name">
+                                <input type="email" placeholder="Correo Institucional" required class="p-2 border rounded text-sm participant-email">
+                                <input type="text" placeholder="Carrera" required class="p-2 border rounded text-sm participant-career">
+                                <input type="text" placeholder="Ciudad de Residencia" required class="p-2 border rounded text-sm participant-city">
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-[10px] text-slate-400 italic">Mínimo 3, máximo 4 participantes por equipo. Deben pertenecer a la misma universidad.</p>
+                    
+                    <div class="flex justify-end pt-2">
+                        <button type="submit" class="bg-michelin text-white font-bold px-6 py-3 rounded uppercase text-sm hover:bg-blue-900 transition">Enviar Registro</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <section id="calendario" class="py-24 bg-slate-900 text-white scroll-mt-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-black mb-16 uppercase italic">Fechas Clave 2026</h2>
+            <div class="max-w-2xl mx-auto border-l-2 border-white/20 pl-8 space-y-12 text-left">
                 <div class="relative">
                     <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-yellow-400"></div>
                     <h4 class="font-bold text-yellow-400 uppercase tracking-widest text-sm">16 Feb - 15 Mar</h4>
                     <p class="text-xl font-bold mt-1">Inscripción de equipos</p>
                 </div>
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-blue-500"></div>
-                    <h4 class="font-bold text-blue-400 uppercase tracking-widest text-sm">16 Marzo</h4>
-                    <p class="text-xl font-bold mt-1 uppercase italic">Publicación del Reto (10:00h)</p>
-                </div>
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.5)]"></div>
-                    <h4 class="font-bold text-green-400 uppercase tracking-widest text-sm">17 Abril</h4>
-                    <p class="text-2xl font-black mt-1 uppercase italic">Gran Final Valladolid</p>
-                    <p class="text-slate-400 text-sm mt-2">Sede: Escuela de Ingenierías Industriales (EII).</p>
+                <div class="relative text-green-400">
+                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-green-500"></div>
+                    <h4 class="font-bold uppercase tracking-widest text-sm">17 Abril</h4>
+                    <p class="text-2xl font-black mt-1">Gran Final Valladolid</p>
                 </div>
             </div>
         </div>
@@ -77,31 +124,71 @@
 
     <footer class="py-20 bg-slate-50 border-t border-slate-200 text-center">
         <div class="container mx-auto px-6">
-            <h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-12">Organizan</h4>
-            
+            <h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-12 italic">Organizan</h4>
             <div class="flex flex-wrap justify-center items-center gap-8 lg:gap-16 mb-16">
-                <img src="https://jaiduqdom.github.io/hackathon-michelin/logo_michelin.png" alt="Michelin" class="h-10 lg:h-12 w-auto grayscale hover:grayscale-0 transition">
-                
-                <img src="https://jaiduqdom.github.io/hackathon-michelin/logo_cea.png" alt="CEA" class="h-10 lg:h-12 w-auto grayscale hover:grayscale-0 transition">
-                
-                <img src="https://jaiduqdom.github.io/hackathon-michelin/logo_uva.png" alt="Universidad de Valladolid" class="h-14 lg:h-16 w-auto grayscale hover:grayscale-0 transition">
-                
-                <div class="flex flex-col items-center border-l border-slate-300 pl-8">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mb-2">Sede y Colaborador</span>
-                    <img src="https://jaiduqdom.github.io/hackathon-michelin/logo_eii.png" alt="Escuela de Ingenierías Industriales" class="h-16 lg:h-20 w-auto grayscale hover:grayscale-0 transition">
-                </div>
-            </div>
-
-            <div class="space-y-4">
-                <p class="text-sm font-bold text-michelin">
-                    Web Oficial: <a href="http://www.hackathonmichelin.es" class="text-blue-600 hover:underline italic">www.hackathonmichelin.es</a>
-                </p>
-                <p class="text-[10px] text-slate-400 uppercase tracking-widest">
-                    © 2026 Hackathon Michelin - CEA. Cátedra Michelin & Escuela de Ingenierías Industriales.
-                </p>
+                <img src="https://jaiduqdom.github.io/hackathon-michelin/logo_michelin.png" alt="Michelin" class="h-10 grayscale">
+                <img src="https://jaiduqdom.github.io/hackathon-michelin/logo-cea.png" alt="CEA" class="h-10 grayscale">
+                <img src="https://jaiduqdom.github.io/hackathon-michelin/logo_uva.png" alt="Universidad de Valladolid" class="h-14 grayscale">
+                <img src="https://jaiduqdom.github.io/hackathon-michelin/logo_eii.png" alt="Escuela de Ingenierías Industriales" class="h-16 grayscale">
             </div>
         </div>
     </footer>
 
+    <script>
+        // Funcionalidad Modal
+        function toggleModal() {
+            const body = document.querySelector('body');
+            const modal = document.querySelector('#modalRegistro');
+            modal.classList.toggle('opacity-0');
+            modal.classList.toggle('pointer-events-none');
+            body.classList.toggle('modal-active');
+        }
+
+        // Generar campos para 4 participantes por defecto
+        const container = document.getElementById('participantesContainer');
+        for (let i = 2; i <= 4; i++) {
+            const div = document.createElement('div');
+            div.className = 'p-4 bg-slate-50 rounded-lg border border-slate-200';
+            div.innerHTML = `
+                <h5 class="font-bold text-sm text-slate-600 mb-4 uppercase">Participante ${i}</h5>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" placeholder="Nombre y Apellidos" class="p-2 border rounded text-sm participant-name">
+                    <input type="email" placeholder="Correo Institucional" class="p-2 border rounded text-sm participant-email">
+                    <input type="text" placeholder="Carrera" class="p-2 border rounded text-sm participant-career">
+                    <input type="text" placeholder="Ciudad de Residencia" class="p-2 border rounded text-sm participant-city">
+                </div>
+            `;
+            container.appendChild(div);
+        }
+
+        // Manejo del envío del formulario vía Mailto
+        document.getElementById('formInscripcion').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const equipo = document.getElementById('nombreEquipo').value;
+            const universidad = document.getElementById('universidadEquipo').value;
+            let body = `Inscripción Hackathon Michelin - CEA 2026%0D%0A`;
+            body += `---------------------------------------%0D%0A`;
+            body += `Equipo: ${equipo}%0D%0A`;
+            body += `Universidad: ${universidad}%0D%0A%0D%0A`;
+
+            const names = document.querySelectorAll('.participant-name');
+            const emails = document.querySelectorAll('.participant-email');
+            const careers = document.querySelectorAll('.participant-career');
+            const cities = document.querySelectorAll('.participant-city');
+
+            names.forEach((name, index) => {
+                if(name.value.trim() !== "") {
+                    body += `Participante ${index+1}:%0D%0A`;
+                    body += `- Nombre: ${name.value}%0D%0A`;
+                    body += `- Email: ${emails[index].value}%0D%0A`;
+                    body += `- Carrera: ${careers[index].value}%0D%0A`;
+                    body += `- Ciudad: ${cities[index].value}%0D%0A%0D%0A`;
+                }
+            });
+
+            window.location.href = `mailto:contacto@hackathonmichelin.es?subject=Inscripción: ${equipo}&body=${body}`;
+        });
+    </script>
 </body>
 </html>
