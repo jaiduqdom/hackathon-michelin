@@ -3,153 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michelin Hackathon 2026 | El Reto Industrial del Futuro</title>
+    <title>Hackathon Michelin - CEA 2026 | Escuela de Ingenierías Industriales</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .bg-michelin { background-color: #002c5f; }
-        .text-michelin { color: #002c5f; }
-        .accent-michelin { background-color: #ffda00; }
-        .hero-gradient { background: linear-gradient(rgba(0,44,95,0.8), rgba(0,44,95,0.8)), url('https://images.unsplash.com/photo-1581092334651-ddf26d9a1930?auto=format&fit=crop&q=80'); background-size: cover; background-position: center; }
+        :root { --michelin-blue: #002c5f; --michelin-yellow: #ffda00; }
+        .bg-michelin { background-color: var(--michelin-blue); }
+        .text-michelin { color: var(--michelin-blue); }
+        .accent-michelin { background-color: var(--michelin-yellow); }
+        .hero-pattern { background-color: #f8fafc; background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px); background-size: 24px 24px; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-white text-slate-900 font-sans">
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <span class="text-2xl font-bold text-michelin">MICHELIN <span class="text-blue-500 italic">HACKATHON</span></span>
+            <div class="flex items-center">
+                <span class="text-xl font-black text-michelin uppercase tracking-tighter">Michelin - CEA <span class="text-blue-500 italic">Hackathon</span></span>
             </div>
-            <div class="hidden md:flex space-x-8 font-medium">
+            <div class="hidden lg:flex space-x-8 font-bold text-xs uppercase tracking-widest">
                 <a href="#inicio" class="hover:text-blue-600 transition">Inicio</a>
                 <a href="#reto" class="hover:text-blue-600 transition">El Reto</a>
-                <a href="#fechas" class="hover:text-blue-600 transition">Calendario</a>
-                <a href="#bases" class="hover:text-blue-600 transition">Bases</a>
-                <a href="#inscripcion" class="bg-michelin text-white px-6 py-2 rounded-full hover:bg-blue-800 transition">Inscribirse</a>
+                <a href="#calendario" class="hover:text-blue-600 transition">Calendario</a>
+                <a href="#inscripcion" class="bg-michelin text-white px-5 py-2 rounded-sm shadow-md hover:bg-blue-900 transition">Inscribirse</a>
             </div>
         </div>
     </nav>
 
-    <header id="inicio" class="hero-gradient h-screen flex items-center justify-center text-center text-white pt-20">
-        <div class="container mx-auto px-6">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 animate-fade-in">MUEVE EL MUNDO HACIA EL FUTURO</h1>
-            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-gray-200">
-                Acepta el reto industrial multidisciplinar de Michelin y demuestra tu talento en visión artificial, robótica y mecánica[cite: 8].
-            </p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#inscripcion" class="accent-michelin text-michelin font-bold px-10 py-4 rounded-lg text-lg hover:scale-105 transition">¡Inscríbete ahora!</a>
-                <a href="#bases" class="border-2 border-white px-10 py-4 rounded-lg text-lg hover:bg-white hover:text-michelin transition">Ver Bases</a>
+    <header id="inicio" class="hero-pattern pt-32 pb-20 border-b border-slate-100">
+        <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2 text-center lg:text-left">
+                <div class="inline-block px-4 py-1 bg-yellow-400 text-michelin rounded-full text-[10px] font-black mb-6 uppercase tracking-[0.2em]">Edición 2026</div>
+                <h1 class="text-5xl lg:text-7xl font-black text-michelin mb-6 leading-[1.1] uppercase italic">Ingeniería que <br><span class="text-blue-600 not-italic">mueve el mundo</span></h1>
+                <p class="text-lg text-slate-600 mb-10 max-w-xl leading-relaxed">
+                    Resuelve un reto industrial multidisciplinar aplicando visión artificial, robótica y mecánica. Un evento de la <strong>Cátedra Michelin</strong> y la <strong>Escuela de Ingenierías Industriales</strong>.
+                </p>
+                <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                    <a href="#inscripcion" class="bg-michelin text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm">Registrar Equipo</a>
+                </div>
+            </div>
+            <div class="lg:w-1/2 relative">
+                <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-8 border-white">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000" alt="Ingeniería Industrial" class="w-full h-auto">
+                </div>
+                <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-yellow-400 rounded-full z-0"></div>
             </div>
         </div>
     </header>
 
-    <section id="reto" class="py-20 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-16 text-michelin italic">¿EN QUÉ CONSISTE?</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="p-8 border rounded-2xl hover:shadow-xl transition">
-                    <i class="fas fa-microchip text-4xl text-blue-500 mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4">Innovación Real</h3>
-                    <p class="text-gray-600">Propón soluciones con impacto directo en procesos industriales y movilidad sostenible[cite: 16].</p>
-                </div>
-                <div class="p-8 border rounded-2xl hover:shadow-xl transition">
-                    <i class="fas fa-users text-4xl text-blue-500 mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4">Expertise</h3>
-                    <p class="text-gray-600">Acompañamiento directo por expertos de Michelin durante todo el evento[cite: 12].</p>
-                </div>
-                <div class="p-8 border rounded-2xl hover:shadow-xl transition">
-                    <i class="fas fa-trophy text-4xl text-blue-500 mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4">Visibilidad</h3>
-                    <p class="text-gray-600">Presenta tu proyecto en las Jornadas de Automática en Córdoba ante 400 académicos[cite: 15, 54].</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="fechas" class="py-20 bg-gray-100">
+    <section id="calendario" class="py-24 bg-slate-900 text-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold mb-16 text-center text-michelin italic">FECHAS CLAVE</h2>
-            <div class="max-w-4xl mx-auto space-y-6">
-                <div class="flex items-center bg-white p-6 rounded-xl shadow-sm border-l-8 border-yellow-400">
-                    <span class="text-2xl font-bold w-48">16 Feb - 15 Mar</span>
-                    <span class="text-lg flex-1">Plazo de Inscripción </span>
+            <h2 class="text-3xl font-black text-center mb-16 uppercase italic">Calendario 2026</h2>
+            <div class="max-w-2xl mx-auto border-l-2 border-white/20 pl-8 space-y-12">
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-yellow-400"></div>
+                    <h4 class="font-bold text-yellow-400 uppercase tracking-widest text-sm">16 Feb - 15 Mar</h4>
+                    <p class="text-xl font-bold mt-1">Inscripción de equipos</p>
                 </div>
-                <div class="flex items-center bg-white p-6 rounded-xl shadow-sm border-l-8 border-blue-500">
-                    <span class="text-2xl font-bold w-48">16 Marzo</span>
-                    <span class="text-lg flex-1">Publicación del Reto (10:00h) </span>
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-blue-500"></div>
+                    <h4 class="font-bold text-blue-400 uppercase tracking-widest text-sm">16 Marzo</h4>
+                    <p class="text-xl font-bold mt-1 uppercase italic">Publicación del Reto (10:00h)</p>
                 </div>
-                <div class="flex items-center bg-white p-6 rounded-xl shadow-sm border-l-8 border-blue-500">
-                    <span class="text-2xl font-bold w-48">23 Marzo</span>
-                    <span class="text-lg flex-1">Entrega de Anteproyectos (23:59h) </span>
-                </div>
-                <div class="flex items-center bg-white p-6 rounded-xl shadow-sm border-l-8 border-green-500">
-                    <span class="text-2xl font-bold w-48">17 Abril</span>
-                    <span class="text-lg flex-1">Final en Fábrica Michelin Valladolid y Ganador [cite: 18, 51]</span>
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.5)]"></div>
+                    <h4 class="font-bold text-green-400 uppercase tracking-widest text-sm">17 Abril</h4>
+                    <p class="text-2xl font-black mt-1 uppercase italic">Gran Final Valladolid</p>
+                    <p class="text-slate-400 text-sm mt-2">Sede: Escuela de Ingenierías Industriales (EII).</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="bases" class="py-20 bg-white">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <h2 class="text-4xl font-bold mb-12 text-center text-michelin italic">BASES DE LA COMPETICIÓN</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-gray-50 p-6 rounded-lg">
-                    <h4 class="font-bold text-xl mb-4 border-b-2 border-blue-200 pb-2">Equipos</h4>
-                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
-                        <li>3 a 4 participantes de grado o máster[cite: 21, 22].</li>
-                        <li>Deben pertenecer a la misma universidad española[cite: 22, 23].</li>
-                        <li>Límite: Máximo de 40 equipos por orden de registro[cite: 39].</li>
-                    </ul>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg">
-                    <h4 class="font-bold text-xl mb-4 border-b-2 border-blue-200 pb-2">Evaluación</h4>
-                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
-                        <li>Innovación técnica y originalidad (40%)[cite: 63].</li>
-                        <li>Rigor técnico y calidad de documentación (25%)[cite: 64].</li>
-                        <li>Viabilidad técnica y económica (25%)[cite: 65].</li>
-                        <li>Sostenibilidad y ética (10%)[cite: 66].</li>
-                    </ul>
+    <footer class="py-20 bg-slate-50 border-t border-slate-200 text-center">
+        <div class="container mx-auto px-6">
+            <h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-12">Organizan</h4>
+            
+            <div class="flex flex-wrap justify-center items-center gap-8 lg:gap-16 mb-16">
+                <img src="https://jaiduqdom.github.io/hackathon-michelin/logo_michelin.png" alt="Michelin" class="h-10 lg:h-12 w-auto grayscale hover:grayscale-0 transition">
+                
+                <img src="https://jaiduqdom.github.io/hackathon-michelin/logo_cea.png" alt="CEA" class="h-10 lg:h-12 w-auto grayscale hover:grayscale-0 transition">
+                
+                <img src="https://jaiduqdom.github.io/hackathon-michelin/logo_uva.png" alt="Universidad de Valladolid" class="h-14 lg:h-16 w-auto grayscale hover:grayscale-0 transition">
+                
+                <div class="flex flex-col items-center border-l border-slate-300 pl-8">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mb-2">Sede y Colaborador</span>
+                    <img src="https://jaiduqdom.github.io/hackathon-michelin/logo_eii.png" alt="Escuela de Ingenierías Industriales" class="h-16 lg:h-20 w-auto grayscale hover:grayscale-0 transition">
                 </div>
             </div>
-            
-            <div class="mt-12 bg-yellow-50 p-8 border border-yellow-200 rounded-xl">
-                <h4 class="font-bold text-xl mb-4 text-yellow-800 uppercase tracking-wider">Uso de IA</h4>
-                <p class="text-yellow-900 leading-relaxed">
-                    Se permite el uso de herramientas como ChatGPT o Gemini **solo como consulta**. Está estrictamente prohibido generar el material final entregado (código o texto) directamente con IA. La detección de contenido generado sin atribución conlleva descalificación inmediata[cite: 58].
+
+            <div class="space-y-4">
+                <p class="text-sm font-bold text-michelin">
+                    Web Oficial: <a href="http://www.hackathonmichelin.es" class="text-blue-600 hover:underline italic">www.hackathonmichelin.es</a>
+                </p>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest">
+                    © 2026 Hackathon Michelin - CEA. Cátedra Michelin & Escuela de Ingenierías Industriales.
                 </p>
             </div>
-        </div>
-    </section>
-
-    <section id="inscripcion" class="py-20 bg-michelin text-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-8 italic">¿ESTÁIS LISTOS?</h2>
-            <p class="mb-12 text-xl max-w-2xl mx-auto">
-                Para inscribiros, enviad un correo a <span class="text-yellow-400 font-bold">contacto@hackathonmichelin.es</span> indicando el nombre de vuestro equipo y los datos de cada integrante[cite: 25, 26].
-            </p>
-            <div class="bg-white/10 p-10 rounded-3xl backdrop-blur-md max-w-2xl mx-auto text-left">
-                <h4 class="font-bold mb-4">Datos requeridos por participante[cite: 28]:</h4>
-                <ul class="grid grid-cols-2 gap-4 text-sm opacity-90">
-                    <li><i class="fas fa-check-circle mr-2"></i> Nombre y apellidos [cite: 29]</li>
-                    <li><i class="fas fa-check-circle mr-2"></i> Correo institucional [cite: 30]</li>
-                    <li><i class="fas fa-check-circle mr-2"></i> Carrera y Universidad [cite: 31, 32]</li>
-                    <li><i class="fas fa-check-circle mr-2"></i> Ciudad de residencia [cite: 33]</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-12 bg-gray-900 text-gray-400">
-        <div class="container mx-auto px-6 text-center">
-            <div class="flex justify-center space-x-12 mb-8">
-                <span class="font-bold text-white">Organizan:</span>
-                <span>Michelin [cite: 4]</span>
-                <span>Universidad de Valladolid [cite: 5]</span>
-                <span>CEA (Visión por Computador) [cite: 6]</span>
-            </div>
-            <p>© 2026 Michelin Hackathon. Todos los derechos reservados.</p>
-            <p class="text-xs mt-4">Los proyectos serán propiedad intelectual de sus autores[cite: 77].</p>
         </div>
     </footer>
 
