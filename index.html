@@ -12,7 +12,8 @@
         .text-michelin { color: var(--michelin-blue); }
         .accent-michelin { background-color: var(--michelin-yellow); }
         .hero-pattern { background-color: #f8fafc; background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px); background-size: 24px 24px; }
-        .modal { transition: opacity 0.25s ease; }
+        .modal { transition: opacity 0.25s ease; display: none; }
+        .modal.active { display: flex; }
         body.modal-active { overflow-y: hidden; }
     </style>
 </head>
@@ -27,7 +28,11 @@
                 <a href="#inicio" class="hover:text-blue-600 transition">Inicio</a>
                 <a href="#reto" class="hover:text-blue-600 transition">El Reto</a>
                 <a href="#calendario" class="hover:text-blue-600 transition">Calendario</a>
-                <button onclick="toggleModal()" class="bg-michelin text-white px-5 py-2 rounded-sm shadow-md hover:bg-blue-900 transition">Registrar Equipo</button>
+                <div class="flex gap-2">
+                    <button onclick="toggleModal('modalInscripcion')" class="bg-michelin text-white px-4 py-2 rounded-sm shadow-md hover:bg-blue-900 transition">Inscripción</button>
+                    <!--<button onclick="toggleModal('modalAnteproyecto')" class="bg-blue-600 text-white px-4 py-2 rounded-sm shadow-md hover:bg-blue-800 transition">Enviar Anteproyecto</button>-->
+					<button disabled class="bg-blue-600 text-white px-4 py-2 rounded-sm shadow-md hover:bg-blue-800 transition">Enviar Anteproyecto</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -38,17 +43,17 @@
                 <div class="inline-block px-4 py-1 bg-yellow-400 text-michelin rounded-full text-[10px] font-black mb-6 uppercase tracking-[0.2em]">Edición 2026</div>
                 <h1 class="text-5xl lg:text-7xl font-black text-michelin mb-6 leading-[1.1] uppercase italic">Ingeniería que <br><span class="text-blue-600 not-italic">mueve el mundo</span></h1>
                 <p class="text-lg text-slate-600 mb-10 max-w-xl leading-relaxed text-justify">
-                    Un desafío universitario nacional organizado por <strong>Michelin</strong>, líder mundial en la fabricación de neumáticos, el <strong>Comité Español de Automática (CEA)</strong>, a través de su Grupo Temático de Visión por Computador, la <strong>Cátedra Michelin</strong> y la <strong>Escuela de Ingenierías Industriales de la Universidad de Valladolid</strong>.
+                    Un desafío universitario nacional organizado por <strong>Michelin</strong>, el <strong>Comité Español de Automática (CEA)</strong>, la <strong>Cátedra Michelin</strong> y la <strong>Escuela de Ingenierías Industriales de la Universidad de Valladolid</strong>.
                 </p>
                 <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                    <button onclick="toggleModal()" class="bg-michelin text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm">Registrar Equipo</button>
+                    <button onclick="toggleModal('modalInscripcion')" class="bg-michelin text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm">Inscripción</button>
+                    <!--<button onclick="toggleModal('modalAnteproyecto')" class="bg-blue-600 text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm">Enviar Anteproyecto</button>-->
+					<button disabled class="bg-blue-600 text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm">Enviar Anteproyecto</button>
                 </div>
             </div>            	
 			<div class="lg:w-1/2 flex flex-col justify-start">
 				<div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-8 border-white leading-[0] block">
-					<img src="https://jaiduqdom.github.io/hackathon-michelin/fabrica.png" 
-						 alt="Factoría Michelin" 
-						 class="w-full h-[650px] object-cover object-[center_70%] display-block">
+					<img src="https://jaiduqdom.github.io/hackathon-michelin/fabrica.png" alt="Factoría Michelin" class="w-full h-[650px] object-cover object-[center_70%] display-block">
 				</div>
 			</div>
         </div>
@@ -60,7 +65,7 @@
                 <h2 class="text-3xl font-black text-center mb-12 uppercase italic text-michelin">El Desafío 2026</h2>
                 <div class="prose prose-slate max-w-none text-slate-600 space-y-6 text-center lg:text-left">
                     <p class="text-lg leading-relaxed text-justify">
-                        El <strong>Hackathon Michelin - CEA 2026</strong> invita a estudiantes de grado y máster de toda España a resolver un problema industrial multidisciplinar. Los equipos deberán aplicar conocimientos en <strong>visión artificial, robótica, automática y mecánica</strong> para proponer soluciones innovadoras bajo la tutela de expertos de Michelin. Los equipos seleccionados podrán conocer las instalaciones de Michelin y presentar sus proyectos ante los expertos de la fábrica y profesores de la universidad. Además, el equipo ganador podrá presentar su proyecto en las Jornadas de Automática, evento de primer orden en el panorama nacional organizado por el Comité Español de Automática.
+                        El <strong>Hackathon Michelin - CEA 2026</strong> invita a estudiantes de grado y máster de toda España a resolver un problema industrial multidisciplinar. Los equipos deberán aplicar conocimientos en <strong>visión artificial, robótica, automática y mecánica</strong> para proponer soluciones innovadoras. Los equipos seleccionados podrán conocer las instalaciones de Michelin y presentar sus proyectos ante un tribunal experto. Además, el ganador podrá presentar su trabajo en las Jornadas de Automática en Córdoba.
                     </p>
 					<div class="mt-8 flex justify-center lg:justify-start">
 						<a href="Bases_Hackathon_Michelin_CEA.pdf" target="_blank" class="flex items-center gap-2 text-michelin font-bold hover:text-blue-600 transition border-b-2 border-michelin">
@@ -68,21 +73,6 @@
 							Leer las bases completas del Hackathon (PDF)
 						</a>
 					</div>					
-                    <div class="grid md:grid-cols-2 gap-8 mt-12 text-left">
-                        <div class="bg-slate-50 p-6 rounded-xl border-l-4 border-blue-600">
-                            <h4 class="font-bold text-michelin mb-3 uppercase text-sm italic">Fase de Anteproyecto</h4>
-                            <p class="text-sm">Se evaluará la innovación, creatividad y la viabilidad técnica y económica de la propuesta inicial. Solo los 5 mejores equipos pasarán a la fase de desarrollo.</p>
-                        </div>
-                        <div class="bg-slate-50 p-6 rounded-xl border-l-4 border-yellow-400">
-                            <h4 class="font-bold text-michelin mb-3 uppercase text-sm italic">Criterios de Evaluación</h4>
-                            <ul class="text-xs space-y-2 font-medium">
-                                <li>• Innovación técnica y originalidad (40%)</li>
-                                <li>• Viabilidad técnica y económica (25%)</li>
-                                <li>• Calidad de la documentación (25%)</li>
-                                <li>• Sostenibilidad y normativa (10%)</li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -93,75 +83,55 @@
             <h2 class="text-3xl font-black text-center mb-16 uppercase italic">Calendario de Fases 2026</h2>
             <div class="max-w-3xl mx-auto space-y-8">
                 <div class="flex items-start gap-6 border-b border-white/10 pb-6">
-                    <div class="bg-yellow-400 text-michelin font-black p-3 rounded text-xs min-w-[140px] text-center uppercase">16 Feb - 15 Mar</div>
+                    <div class="bg-yellow-400 text-michelin font-black p-3 rounded text-xs min-w-[140px] text-center uppercase">16 Feb - 09 Abr</div>
                     <div>
-                        <h4 class="font-bold text-lg">Inscripción de equipos</h4>
+                        <h4 class="font-bold text-lg">Plazo de inscripción</h4>
                         <p class="text-slate-400 text-sm">Registro de grupos de 3 a 4 estudiantes de la misma universidad.</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-6 border-b border-white/10 pb-6">
-                    <div class="bg-blue-600 text-white font-black p-3 rounded text-xs min-w-[140px] text-center uppercase">16 Marzo</div>
+                    <div class="bg-blue-600 text-white font-black p-3 rounded text-xs min-w-[140px] text-center uppercase">13 Abril</div>
                     <div>
                         <h4 class="font-bold text-lg">Publicación del Reto (10:00h)</h4>
-                        <p class="text-slate-400 text-sm">Apertura del enunciado técnico y comienzo del trabajo de anteproyecto.</p>
+                        <p class="text-slate-400 text-sm">Apertura del enunciado técnico y comienzo del trabajo.</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-6 border-b border-white/10 pb-6">
-                    <div class="bg-blue-600 text-white font-black p-3 rounded text-xs min-w-[140px] text-center uppercase">23 Marzo</div>
+                    <div class="bg-blue-600 text-white font-black p-3 rounded text-xs min-w-[140px] text-center uppercase">19 Abril</div>
                     <div>
-                        <h4 class="font-bold text-lg">Entrega de Anteproyectos (23:59h)</h4>
-                        <p class="text-slate-400 text-sm">Fecha límite para enviar la propuesta inicial (máximo 10 páginas).</p>
+                        <h4 class="font-bold text-lg text-yellow-400">Entrega de Anteproyectos (23:59h)</h4>
+                        <p class="text-slate-400 text-sm">Fecha límite improrrogable para enviar la propuesta inicial.</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-6 border-b border-white/10 pb-6">
-                    <div class="bg-slate-700 text-white font-black p-3 rounded text-xs min-w-[140px] text-center uppercase">26 Marzo</div>
+                    <div class="bg-slate-700 text-white font-black p-3 rounded text-xs min-w-[140px] text-center uppercase">24 Abril</div>
                     <div>
                         <h4 class="font-bold text-lg">Selección de Finalistas</h4>
-                        <p class="text-slate-400 text-sm">Comunicación de los 5 equipos seleccionados para la fase presencial.</p>
+                        <p class="text-slate-400 text-sm">Comunicación de los equipos que pasan a la fase presencial.</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-6">
-                    <div class="bg-green-500 text-white font-black p-3 rounded text-xs min-w-[140px] text-center uppercase">17 Abril</div>
+                    <div class="bg-green-500 text-white font-black p-3 rounded text-xs min-w-[140px] text-center uppercase">30 Abril</div>
                     <div>
                         <h4 class="font-bold text-lg text-green-400 uppercase italic">Gran Final Presencial</h4>
-                        <p class="text-slate-400 text-sm">Visita a la fábrica de Michelin en Valladolid, defensa de proyectos y entrega de premios.</p>
+                        <p class="text-slate-400 text-sm">Defensa de proyectos en la fábrica de Michelin en Valladolid.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="modalRegistro" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
-        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="toggleModal()"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded shadow-lg z-50 overflow-y-auto max-h-[90vh]">
-            <div class="modal-content py-6 text-left px-8">
-                <div class="flex justify-between items-center pb-3">
-                    <p class="text-2xl font-black text-michelin uppercase italic">Inscripción de Equipo</p>
-                    <div class="modal-close cursor-pointer z-50" onclick="toggleModal()">
-                        <i class="fas fa-times text-2xl"></i>
-                    </div>
-                </div>
+    <div id="modalInscripcion" class="modal fixed inset-0 z-[100] items-center justify-center bg-slate-900/90 p-4">
+        <div class="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden h-[90vh]">
+            <button onclick="toggleModal('modalInscripcion')" class="absolute top-4 right-6 text-2xl font-bold text-slate-400 hover:text-red-600 z-50">×</button>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdtqW8A7S9r9zvuoFMebKVIa5GxuH89uA8vGHJwvdAFVIjppA/viewform?embedded=true" width="100%" height="100%" frameborder="0">Cargando…</iframe>
+        </div>
+    </div>
 
-                <form id="formInscripcion" class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-black uppercase tracking-widest text-slate-500 mb-2">Nombre del Equipo</label>
-                            <input type="text" id="nombreEquipo" required class="w-full p-3 bg-slate-100 border-none rounded focus:ring-2 focus:ring-blue-500 outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-black uppercase tracking-widest text-slate-500 mb-2">Universidad</label>
-                            <input type="text" id="universidadEquipo" required class="w-full p-3 bg-slate-100 border-none rounded focus:ring-2 focus:ring-blue-500 outline-none">
-                        </div>
-                    </div>
-
-                    <div id="participantesContainer" class="space-y-6">
-                        </div>
-
-                    <div class="flex justify-end pt-4 border-t border-slate-100">
-                        <button type="submit" class="bg-michelin text-white font-bold px-8 py-3 rounded uppercase text-sm hover:bg-blue-900 transition shadow-lg">Enviar Inscripción</button>
-                    </div>
-                </form>
-            </div>
+    <div id="modalAnteproyecto" class="modal fixed inset-0 z-[100] items-center justify-center bg-slate-900/90 p-4">
+        <div class="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden h-[90vh]">
+            <button onclick="toggleModal('modalAnteproyecto')" class="absolute top-4 right-6 text-2xl font-bold text-slate-400 hover:text-red-600 z-50">×</button>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdYXS-vs4wC8I_nZsVXF58MYzRIjqLBYpWbkm9BRzliY5HGdA/viewform?embedded=true" width="100%" height="100%" frameborder="0">Cargando…</iframe>
         </div>
     </div>
 
@@ -179,48 +149,12 @@
     </footer>
 
     <script>
-        function toggleModal() {
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
             const body = document.querySelector('body');
-            const modal = document.querySelector('#modalRegistro');
-            modal.classList.toggle('opacity-0');
-            modal.classList.toggle('pointer-events-none');
+            modal.classList.toggle('active');
             body.classList.toggle('modal-active');
         }
-
-        const container = document.getElementById('participantesContainer');
-        for (let i = 1; i <= 4; i++) {
-            const div = document.createElement('div');
-            div.className = 'p-4 bg-slate-50 rounded-lg border border-slate-200';
-            div.innerHTML = `
-                <h5 class="font-bold text-xs text-blue-600 mb-4 uppercase">Integrante ${i} ${i <= 3 ? '*' : '(Opcional)'}</h5>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <input type="text" placeholder="Nombre y Apellidos" ${i <= 3 ? 'required' : ''} class="p-2 border rounded text-xs participant-name">
-                    <input type="email" placeholder="Email Institucional" ${i <= 3 ? 'required' : ''} class="p-2 border rounded text-xs participant-email">
-                    <input type="text" placeholder="Carrera/Grado" ${i <= 3 ? 'required' : ''} class="p-2 border rounded text-xs participant-career">
-                    <input type="text" placeholder="Ciudad de Residencia" ${i <= 3 ? 'required' : ''} class="p-2 border rounded text-xs participant-city">
-                </div>
-            `;
-            container.appendChild(div);
-        }
-
-        document.getElementById('formInscripcion').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const equipo = document.getElementById('nombreEquipo').value;
-            const universidad = document.getElementById('universidadEquipo').value;
-            let body = `REGISTRO HACKATHON MICHELIN 2026%0D%0A%0D%0A`;
-            body += `Equipo: ${equipo}%0D%0A`;
-            body += `Universidad: ${universidad}%0D%0A%0D%0A`;
-
-            document.querySelectorAll('.participant-name').forEach((name, idx) => {
-                if(name.value.trim() !== "") {
-                    body += `INTEGRANTE ${idx+1}:%0D%0A`;
-                    body += `- Nombre: ${name.value}%0D%0A`;
-                    body += `- Email: ${document.querySelectorAll('.participant-email')[idx].value}%0D%0A%0D%0A`;
-                }
-            });
-
-            window.location.href = `mailto:contacto@hackathonmichelin.es?subject=Inscripcion Hackathon: ${equipo}&body=${body}`;
-        });
     </script>
 </body>
 </html>
