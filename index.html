@@ -30,8 +30,7 @@
                 <a href="#calendario" class="hover:text-blue-600 transition">Calendario</a>
                 <div class="flex gap-2">
                     <button onclick="toggleModal('modalInscripcion')" class="bg-michelin text-white px-4 py-2 rounded-sm shadow-md hover:bg-blue-900 transition">Inscripción</button>
-                    <!--<button onclick="toggleModal('modalAnteproyecto')" class="bg-blue-600 text-white px-4 py-2 rounded-sm shadow-md hover:bg-blue-800 transition">Enviar Anteproyecto</button>-->
-					<button disabled class="bg-blue-600 text-white px-4 py-2 rounded-sm shadow-md hover:bg-blue-800 transition">Enviar Anteproyecto</button>
+                    <button disabled class="bg-blue-600 text-white px-4 py-2 rounded-sm shadow-md hover:bg-blue-800 transition opacity-50 cursor-not-allowed">Enviar Anteproyecto</button>
                 </div>
             </div>
         </div>
@@ -43,12 +42,11 @@
                 <div class="inline-block px-4 py-1 bg-yellow-400 text-michelin rounded-full text-[10px] font-black mb-6 uppercase tracking-[0.2em]">Edición 2026</div>
                 <h1 class="text-5xl lg:text-7xl font-black text-michelin mb-6 leading-[1.1] uppercase italic">Ingeniería que <br><span class="text-blue-600 not-italic">mueve el mundo</span></h1>
                 <p class="text-lg text-slate-600 mb-10 max-w-xl leading-relaxed text-justify">
-                    Un desafío universitario nacional organizado por <strong>Michelin</strong>, el <strong>Comité Español de Automática (CEA)</strong>, la <strong>Cátedra Michelin</strong> y la <strong>Escuela de Ingenierías Industriales de la Universidad de Valladolid</strong>.
+                    Un desafío universitario nacional organizado por <strong>Michelin</strong>, el <strong>Comité Español de Automática (CEA)</strong>, la <strong>Escuela de Ingenierías Industriales de la Universidad de Valladolid</strong>, y la <strong>Cátedra Michelin-Universidad de Valladolid.</strong>
                 </p>
                 <div class="flex flex-wrap justify-center lg:justify-start gap-4">
                     <button onclick="toggleModal('modalInscripcion')" class="bg-michelin text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm">Inscripción</button>
-                    <!--<button onclick="toggleModal('modalAnteproyecto')" class="bg-blue-600 text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm">Enviar Anteproyecto</button>-->
-					<button disabled class="bg-blue-600 text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm">Enviar Anteproyecto</button>
+                    <button disabled class="bg-blue-600 text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm opacity-50 cursor-not-allowed">Enviar Anteproyecto</button>
                 </div>
             </div>            	
 			<div class="lg:w-1/2 flex flex-col justify-start">
@@ -67,7 +65,26 @@
                     <p class="text-lg leading-relaxed text-justify">
                         El <strong>Hackathon Michelin - CEA 2026</strong> invita a estudiantes de grado y máster de toda España a resolver un problema industrial multidisciplinar. Los equipos deberán aplicar conocimientos en <strong>visión artificial, robótica, automática y mecánica</strong> para proponer soluciones innovadoras. Los equipos seleccionados podrán conocer las instalaciones de Michelin y presentar sus proyectos ante un tribunal experto. Además, el ganador podrá presentar su trabajo en las Jornadas de Automática en Córdoba.
                     </p>
-					<div class="mt-8 flex justify-center lg:justify-start">
+                    
+                    <h3 class="text-2xl font-black text-center mt-12 mb-8 uppercase italic text-michelin">Premios</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center mb-10">
+                        <div class="bg-slate-50 border border-slate-200 p-6 rounded-xl shadow-md transform hover:-translate-y-1 transition duration-300">
+                            <i class="fas fa-trophy text-5xl text-yellow-400 mb-4 drop-shadow-sm"></i>
+                            <h4 class="text-lg font-black text-slate-800 uppercase tracking-wide">1º Clasificado</h4>
+                            <p class="text-4xl font-bold text-blue-600 mt-2">2.000 €</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 p-6 rounded-xl shadow-md transform hover:-translate-y-1 transition duration-300">
+                            <i class="fas fa-medal text-5xl text-slate-400 mb-4 drop-shadow-sm"></i>
+                            <h4 class="text-lg font-black text-slate-800 uppercase tracking-wide">2º Clasificado</h4>
+                            <p class="text-4xl font-bold text-blue-600 mt-2">1.500 €</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 p-6 rounded-xl shadow-md transform hover:-translate-y-1 transition duration-300">
+                            <i class="fas fa-award text-5xl text-amber-600 mb-4 drop-shadow-sm"></i>
+                            <h4 class="text-lg font-black text-slate-800 uppercase tracking-wide">3º Clasificado</h4>
+                            <p class="text-4xl font-bold text-blue-600 mt-2">1.000 €</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex justify-center lg:justify-start">
 						<a href="Bases_Hackathon_Michelin_CEA.pdf" target="_blank" class="flex items-center gap-2 text-michelin font-bold hover:text-blue-600 transition border-b-2 border-michelin">
 							<i class="fas fa-file-pdf"></i>
 							Leer las bases completas del Hackathon (PDF)
