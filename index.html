@@ -29,8 +29,8 @@
                 <a href="#reto" class="hover:text-blue-600 transition">El Reto</a>
                 <a href="#calendario" class="hover:text-blue-600 transition">Calendario</a>
                 <div class="flex gap-2">
-                    <button onclick="toggleModal('modalInscripcion')" class="bg-michelin text-white px-4 py-2 rounded-sm shadow-md hover:bg-blue-900 transition">Inscripción</button>
-                    <button disabled class="bg-blue-600 text-white px-4 py-2 rounded-sm shadow-md hover:bg-blue-800 transition opacity-50 cursor-not-allowed">Enviar Anteproyecto</button>
+					<button disabled class="bg-blue-600 text-white px-4 py-2 rounded-sm shadow-md hover:bg-blue-800 transition opacity-50 cursor-not-allowed">Inscripción</button>
+					<button onclick="toggleModal('modalAnteproyecto')" class="bg-michelin text-white px-4 py-2 rounded-sm shadow-md hover:bg-blue-900 transition">Enviar Anteproyecto</button>
                 </div>
             </div>
         </div>
@@ -45,9 +45,9 @@
                     Un desafío universitario nacional organizado por <strong>Michelin</strong>, el <strong>Comité Español de Automática (CEA)</strong>, la <strong>Escuela de Ingenierías Industriales de la Universidad de Valladolid</strong>, y la <strong>Cátedra Michelin-Universidad de Valladolid.</strong>
                 </p>
                 <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                    <button onclick="toggleModal('modalInscripcion')" class="bg-michelin text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm">Inscripción</button>
-                    <button disabled class="bg-blue-600 text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm opacity-50 cursor-not-allowed">Enviar Anteproyecto</button>
-                </div>
+					<button disabled class="bg-blue-600 text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm opacity-50 cursor-not-allowed">Inscripción</button>
+					<button onclick="toggleModal('modalAnteproyecto')" class="bg-michelin text-white font-bold px-8 py-4 rounded shadow-lg hover:scale-105 transition uppercase text-sm">Enviar Anteproyecto</button>
+				</div>
             </div>            	
 			<div class="lg:w-1/2 flex flex-col justify-start">
 				<div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-8 border-white leading-[0] block">
@@ -114,6 +114,14 @@
                     </div>
                 </div>
                 <div class="flex items-start gap-6 border-b border-white/10 pb-6">
+                    <div class="bg-slate-700 text-white font-black p-3 rounded text-xs min-w-[140px] text-center uppercase">15 Abril</div>
+                    <div>
+                        <h4 class="font-bold text-lg">Resolución de dudas</h4>
+                        <p class="text-slate-400 text-sm">Día de resolución de dudas de 9 a 15h por correo electrónico.</p>
+                    </div>
+                </div>
+				
+                <div class="flex items-start gap-6 border-b border-white/10 pb-6">
                     <div class="bg-blue-600 text-white font-black p-3 rounded text-xs min-w-[140px] text-center uppercase">19 Abril</div>
                     <div>
                         <h4 class="font-bold text-lg text-yellow-400">Entrega de Anteproyectos (23:59h)</h4>
@@ -170,7 +178,7 @@
                 <img src="https://jaiduqdom.github.io/hackathon-michelin/logo_uva.png" alt="UVa" class="h-14">
                 <img src="https://jaiduqdom.github.io/hackathon-michelin/logo_eii.png" alt="EII" class="h-16">
             </div>
-            <p class="text-[10px] text-slate-400 uppercase tracking-widest">© 2026 Hackathon Michelin - CEA | Valladolid</p>
+            <p class="text-[10px] text-slate-400 uppercase tracking-widest">2026 Hackathon Michelin - CEA | Valladolid</p>
         </div>
     </footer>
 
